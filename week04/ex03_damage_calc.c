@@ -18,11 +18,19 @@ int main() {
         base_damage = damage;
     }
 
-    printf("\n=== COMBAT SIMULATOR ===\n");
-    printf("Player Attack    : %d\n", player_attack);
-    printf("Enemy Defense    : %d\n", enemy_defense);
-    printf("Number of Hits   : %d\n", hit_numbers);
-    printf("Damage           : %d\n", base_damage);
+    if (hit_numbers % 5 == 0) {
+        printf("\n=== COMBAT SIMULATOR ===\n");
+        printf("Player Attack    : %d\n", player_attack);
+        printf("Enemy Defense    : %d\n", enemy_defense);
+        printf("Number of Hits   : %d\n", hit_numbers);
+        printf("Damage           : %d   *** CRITICAL HIT! x1.5 ***\n", base_damage);
+    } else {
+        printf("\n=== COMBAT SIMULATOR ===\n");
+        printf("Player Attack    : %d\n", player_attack);
+        printf("Enemy Defense    : %d\n", enemy_defense);
+        printf("Number of Hits   : %d\n", hit_numbers);
+        printf("Damage           : %d   (Normal)\n", base_damage);
+    }
 
     return 0;
 }
