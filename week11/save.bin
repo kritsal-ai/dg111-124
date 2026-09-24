@@ -1,0 +1,20 @@
+#define SAVE_FILE_PATH "save.bin"
+
+int saveGame(const char* path, const GameData* d) {
+    FILE* f = fopen(path, "wb"); // "wb" = write binary
+    if (!f) return 0;
+    fwrite(d, sizeof(GameData), 1, f);
+    fclose(f);
+    return 1;
+}
+
+int loadGame(const char* path, GameData* d) {
+    FILE* f = fopen(path, "rb");
+    if (!f) return 0;
+    GameData tmp;
+    size_t n = fread(&tmp, sizeof(GameData), 1, f);
+    fclose(f);
+    if (n != 1) return -1;
+    *d = tmp;
+    return 1;
+}
